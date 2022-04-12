@@ -147,6 +147,51 @@ class PyBoy:
 
         return self.quitting
 
+    # advance cpu computation by one instruction
+    def cpu_tick(self):
+        return self.mb.cpu.tick()
+
+    # functions to read registers
+    def read_A(self):
+        return self.mb.cpu.A
+    def read_F(self):
+        return self.mb.cpu.F
+    def read_B(self):
+        return self.mb.cpu.B
+    def read_C(self):
+        return self.mb.cpu.C
+    def read_D(self):
+        return self.mb.cpu.D
+    def read_E(self):
+        return self.mb.cpu.E
+    def read_HL(self):
+        return self.mb.cpu.HL
+    def read_SP(self):
+        return self.mb.cpu.SP
+    def read_PC(self):
+        return self.mb.cpu.PC
+
+
+    # functions to write registers
+    def write_A(self, value):
+        self.mb.cpu.A = value
+    def write_F(self, value):
+        self.mb.cpu.F = value
+    def write_B(self, value):
+        self.mb.cpu.B = value
+    def write_C(self, value):
+        self.mb.cpu.C = value
+    def write_D(self, value):
+        self.mb.cpu.D = value
+    def write_E(self, value):
+        self.mb.cpu.E = value
+    def write_HL(self, value):
+        self.mb.cpu.HL = value
+    def write_SP(self, value):
+        self.mb.cpu.SP = value
+    def write_PC(self, value):
+        self.mb.cpu.PC = value
+
     def _handle_events(self, events):
         # This feeds events into the tick-loop from the window. There might already be events in the list from the API.
         events = self.plugin_manager.handle_events(events)
