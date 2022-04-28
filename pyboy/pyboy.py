@@ -129,6 +129,7 @@ class PyBoy:
         if not self.paused:
             if self.mb.tick():
                 # breakpoint reached
+                self._pause()
                 self.plugin_manager.handle_breakpoint()
             else:
                 self.frame_count += 1
@@ -147,9 +148,9 @@ class PyBoy:
 
         return self.quitting
 
-    # advance cpu computation by one instruction
-    def cpu_tick(self):
-        return self.mb.cpu.tick()
+    # add breakpoint
+    def add_breakpoint(self, bank, addr):
+        self.mb.add_breakpoint(bank, addr)
 
     # functions to read registers
     def read_A(self):

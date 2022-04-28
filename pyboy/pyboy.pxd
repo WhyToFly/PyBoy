@@ -46,7 +46,7 @@ cdef class PyBoy:
     cpdef bint tick(self)
     cpdef void stop(self, save=*)
 
-    cpdef int cpu_tick(self)
+    cpdef void add_breakpoint(self, int, int)
 
     @cython.locals(opcode=uint16_t)
     cpdef int16_t read_A(self)
